@@ -3,7 +3,8 @@
         <div class="container">
 
             <div id="title">
-                 <h1>Crea una nueva <br> cuenta</h1>
+                 <h1>Create an
+                     <br> account</h1>
             </div>
 
             <div></div>
@@ -11,25 +12,25 @@
             <div class="form">
                 
                     <div id="input">
-                        <input type="text" name="username" placeholder="Nombre" [(ngModel)]= "user.name" >
+                        <input type="text" name="username" placeholder="name" [(ngModel)]= "user.name" >
                     </div>
 
                     <div id="input">
-                        <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="user.password" >
+                        <input type="password" name="password" placeholder="password" [(ngModel)]="user.password" >
                     </div>
 
                     <div id="input">
-                        <input type="email" name="email" placeholder="Email"[(ngModel)]="user.email" >
+                        <input type="email" name="email" placeholder="email"[(ngModel)]="user.email" >
                     </div>
 
                     <div class="btn">
-                        <button (click)="create()">Registrarse</button>
+                        <button (click)="create()">sign up</button>
                     </div>
                 
             </div>
 
             <div class="signin">
-                 <h4>¿Ya tienes una cuenta? <a href="" routerLink="/signin">inicia sesión</a></h4>
+                 <h4>Do you already have an account? <a href="" routerLink="/signin">iSign in</a></h4>
             </div>
 
             <div></div>
