@@ -1,0 +1,220 @@
+
+
+<div id="block">
+    <div id="side">
+
+        <div id="side-header">
+            <div id="perfil-block">
+                <div id="perfil-avatar">
+                    <img src="../../../assets/img/Account-Avatar-Profile-PNG-Clipart.png" alt="">
+                </div>
+            </div>
+            <div id="menu-block">
+                    <div id="menu-icon">
+                        <img src="../../../assets/svg/menu-3puntos-vertical.svg" alt="">
+                    </div>
+            </div>
+        </div>
+
+
+        
+
+
+        <div id="new-room">
+
+            <div id="create-new-room" *ngIf="!createRoom" (click)="createRoom=!createRoom">
+                Create new room
+            </div>
+
+            <div id="input-create-new-room" *ngIf="createRoom">
+                <div>
+                    <input type="text" name="room" placeholder="Room name" [(ngModel)]="roomName">
+                </div>
+                <div>
+                    <button (click)="onCreate()">Create</button> <button (click)="createRoom=!createRoom">Cancel</button>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div id="list-menu">
+            <div id="my-room-option" [ngClass]="areMyRoomsVisible?'isVisible' : 'isNotVisible'" (click)="areMyRoomsVisible=!areMyRoomsVisible;areMyNewRoomsVisible=!areMyNewRoomsVisible">
+
+                My <br> Rooms: {{myRooms.length}}
+            </div>
+            <div id="new-room-option" [ngClass]="areMyNewRoomsVisible?'isVisible' : 'isNotVisible' " (click)="areMyRoomsVisible=!areMyRoomsVisible;areMyNewRoomsVisible=!areMyNewRoomsVisible">
+                New <br> Rooms Availables: {{newRooms.length}}
+            </div>
+        </div>
+
+
+       
+
+
+        <div *ngIf="areMyNewRoomsVisible ">
+            <div id="room-list" *ngFor="let newRoom of newRooms" [ngClass]="areMyNewRoomsVisible?'isVisible' : 'isNotVisible' ">
+                <div>
+                    Available room:{{newRoom}} <br>
+                </div>
+               
+                <div>
+                    <button (click)="onJoin(newRoom)">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="areMyRoomsVisible" [ngClass]="areMyRoomsVisible?'isVisible' : 'isNotVisible' ">
+
+            <div id="room-search">
+                <div id="input-search">
+                    <input type="text" placeholder="room search">
+                </div>
+            </div>
+
+            <div id="my-Rooms" *ngFor="let room of myRooms; index as i" (click)="onRoomSelect(room.name,i)" [ngStyle]="{'background-color': iActive===i ? '#396c6b' : '#3b7a79' }">
+
+
+
+                <div class="my-room-avatar">
+                    <div id="user-avatar">
+                        {{room.name.charAt(0).toUpperCase()}}
+                    </div>
+                </div>
+                <div class="my-room-data">
+                    <div class="my-room-name">
+                        {{room.name}}
+                    </div>
+                    <div class="my-room-last">
+                        {{room.lastMessage}}
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+                
+           </div>
+        </div>
+<!--
+        <div >
+            <a href="" routerLink="/">Acceso</a> <br>
+            <a href="" (click)="logout()">cerrar sesión</a><br>
+            <a href="" routerLink="/signup">Sign up</a> <br>
+            
+       </div>
+
+       <div *ngIf="user">
+        {{user.name}}
+        </div>
+       -->
+
+    </div>
+
+
+    <div id="conversation">
+
+        <div id="conversation-header">
+            <div id="conversation-room-name">
+               <span>ROOM:</span> {{roomName}}
+            </div>
+            <div id="conversation-menu">
+                
+                <div id="conversation-menu-icon">
+                    <img src="../../../assets/svg/menu-3puntos-vertical.svg" alt="">
+                </div>
+                <div id="conversation-search">
+                    <img src="../../../assets/svg/icon-search.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div id="conversation-main">
+            
+            <div class="box-messages">
+                
+                <div class="received" *ngFor="let message of messageList" [ngClass]="message.from===user.name?'own-message' : ''" >
+                    <div class="message-recived" [ngClass]="message.from===user.name?'own-color-message' : ''">
+                        <div class="message-container">
+                            <div class="user-name">{{message.from}}</div>
+                            <div >{{message.message}}</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                   
+            </div>
+            
+        </div>
+
+        <div id="conversation-footer">
+            <div id="adjuntar">
+                <img src="../../../assets/svg/icon-adjuntar.svg" alt="">
+            </div>
+            
+            <div id="text-input">
+                <input type="text" name="text" placeholder="message" [(ngModel)]="text" (keyup)="onMessage($event)">
+            </div>
+            <div id="emoticon" (click)="isEmojiListActive=!isEmojiListActive">
+                <img src="../../../assets/svg/icon-emoji-smiley.svg" alt="">
+            </div>
+            <div id="emoji" *ngIf="isEmojiListActive">
+                <emoji-mart [emojiSize]="24" [sheetSize]="64"  (emojiClick)="addEmoji($event)" ></emoji-mart>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="block-main">
+    <div class="block-central">
+        <div class="container">
+            <div class="head"></div>
+            <div class="box-messages">
+
+                <div class="received" *ngFor="let message of messageReceived">
+                    <div class="message-recived">{{message}}</div>
+                </div>
+                <div class="send" *ngFor="let message of messageSend">
+                    <div class="message-send">{{message}}</div>
+                </div>
+                    
+            </div>
+
+
+
+           
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<input type="text" name="room" placeholder="room" [(ngModel)]="room"> {{room}}>
+<button (click)="onJoin()">join</button><br>
+<input type="text" name="text" placeholder="message" [(ngModel)]="text" >
+<button (click)="onMessage()">enviar</button>
+
+-->
+<!--<input type="text" name="room" placeholder="room" [(ngModel)]="room"> {{room}}>
+<button (click)="onJoin()">join</button><br>
+
+<input type="text" name="message" placeholder="message" [(ngModel)]="message"> {{message}}>
+<button (click)="onMessage()">message</button><br>-->

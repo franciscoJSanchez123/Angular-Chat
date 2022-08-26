@@ -1,0 +1,52 @@
+<div class="block-main">
+    <div class="block-central">
+        <div class="container">
+
+            <div id="title">
+                 <h1>Crea una nueva <br> cuenta</h1>
+            </div>
+
+            <div></div>
+
+            <div class="form">
+                
+                    <div id="input">
+                        <input type="text" name="username" placeholder="Nombre" [(ngModel)]= "user.name" >
+                    </div>
+
+                    <div id="input">
+                        <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="user.password" >
+                    </div>
+
+                    <div id="input">
+                        <input type="email" name="email" placeholder="Email"[(ngModel)]="user.email" >
+                    </div>
+
+                    <div class="btn">
+                        <button (click)="create()">Registrarse</button>
+                    </div>
+                
+            </div>
+
+            <div class="signin">
+                 <h4>¿Ya tienes una cuenta? <a href="" routerLink="/signin">inicia sesión</a></h4>
+            </div>
+
+            <div></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!--
+
+    Nombre:<input type="text" name="username" placeholder="nombre" [(ngModel)]= "user.name" >{{user.name}}<br>
+    Contraseña: <input type="password" name="password" placeholder="contraseña" [(ngModel)]="user.password" >{{user.password}}<br>
+    Correo: <input type="email" name="email" placeholder="correo electronico"[(ngModel)]="user.email" >{{user.email}}<br>
+    <button (click)="create()">crear</button>
+
+-->

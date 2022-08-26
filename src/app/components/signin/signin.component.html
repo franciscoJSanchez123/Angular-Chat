@@ -1,0 +1,36 @@
+<div class="block-main">
+    <div class="block-central">
+        <div class="container">
+
+            <div id="title">
+                 <h1>INICIAR SESIÓN</h1>
+            </div>
+
+            <div></div>
+
+            <div class="form">
+                
+                    <div id="input">
+                        <input type="text" name="username" placeholder="Nombre" [(ngModel)]= "userAuth.username" >
+                    </div>
+
+                    <div id="input">
+                        <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="userAuth.password" >
+                    </div>
+
+                    
+
+                    <div class="btn">
+                        <button (click)="signin()">Iniciar Sesión</button>
+                    </div>
+                
+            </div>
+
+            <div class="signin">
+                 <h4>¿NO tienes una cuenta? <a href="" routerLink="/signup">Registrarse</a></h4>
+            </div>
+
+            <div></div>
+        </div>
+    </div>
+</div>
