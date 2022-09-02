@@ -14,7 +14,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart'
 
 
 
-const config:SocketIoConfig = { url: 'http://localhost:3000', options: {}};
+const config:SocketIoConfig = { url: 'https://nest-project1.herokuapp.com', options: {}};
 
 @NgModule({
   declarations: [
